@@ -1,23 +1,29 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Al-Sultan & Khalaf Trading Co",
+  description = "Al-Sultan & Khalaf Trading Company — Trusted since 1973. Leading provider of construction equipment, mining solutions, and industrial services.",
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+    <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <title>Al-Sultan Khalaf</title>
+    <title>{title}</title>
   </head>
   <body>
     <slot />
   </body>
 </html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>
