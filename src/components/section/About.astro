@@ -1,0 +1,356 @@
+<section class="about" aria-label="What we do">
+  <div class="about__container container">
+    <article class="about__item">
+      <h2 class="about__title">WE SUPPLY.</h2>
+      <p class="about__text">
+        Exclusive representatives of top-tier international manufacturers,
+        offering the right equipment for every operation - from light machinery
+        to heavy equipment.
+      </p>
+    </article>
+
+    <article class="about__item">
+      <h2 class="about__title">WE SERVE.</h2>
+      <p class="about__text">
+        From sales and rentals to comprehensive after-sales maintenance, we
+        work around your schedule and your needs.
+      </p>
+    </article>
+
+    <article class="about__item">
+      <h2 class="about__title">WE SUPPORT.</h2>
+      <p class="about__text">
+        With over 220,000 genuine spare parts in stock, we make sure downtime
+        stays minimal and your operations keep moving.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="about-us" aria-label="About us">
+  <div class="about-us__layout">
+    <article class="about-us__content">
+      <h2 class="about-us__title">ABOUT US</h2>
+      <p class="about-us__text">
+        Since <strong>1973</strong>, Al-Sultan &amp; Khalaf Trading Co. has grown
+        into one of Kuwait's most established trading companies - spanning light
+        and heavy equipment, cranes, generators, fluid solutions, and more.
+      </p>
+      <p class="about-us__text">
+        Based in the <strong>Shuwaikh Industrial Area</strong>, our 1,600-square-meter
+        showroom is home to a team of dedicated professionals who take the time
+        to understand what each client needs and deliver solutions that last.
+      </p>
+      <a class="about-us__button" href="#">LEARN MORE</a>
+    </article>
+
+    <div class="about-us__media">
+      <img
+        class="about-us__image"
+        src="/homepage-about-us.png"
+        alt="Kuwait city skyline by the waterfront"
+        loading="lazy"
+      />
+
+      <ul class="about-us__stats" aria-label="Company highlights">
+        <li class="about-us__stat">
+          <span class="about-us__stat-number"
+            ><span class="about-us__stat-count" data-target="50">0</span
+            ><span class="about-us__stat-plus">+</span></span
+          >
+          <span class="about-us__stat-label">years in the market</span>
+        </li>
+        <li class="about-us__stat">
+          <span class="about-us__stat-number"
+            ><span class="about-us__stat-count" data-target="400">0</span
+            ><span class="about-us__stat-plus">+</span></span
+          >
+          <span class="about-us__stat-label">successful projects</span>
+        </li>
+        <li class="about-us__stat">
+          <span class="about-us__stat-number"
+            ><span class="about-us__stat-count" data-target="50">0</span
+            ><span class="about-us__stat-plus">+</span></span
+          >
+          <span class="about-us__stat-label">worldwide partners</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+  const statsList = document.querySelector(".about-us__stats");
+  const counters = statsList?.querySelectorAll(".about-us__stat-count");
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  const runCounters = () => {
+    counters?.forEach((counter) => {
+      const target = Number(counter.getAttribute("data-target") ?? "0");
+
+      if (prefersReducedMotion) {
+        counter.textContent = target.toString();
+        return;
+      }
+
+      const duration = 1800;
+      const startTime = performance.now();
+
+      const tick = () => {
+        const elapsed = performance.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+        const value = Math.floor(target * easedProgress);
+
+        counter.textContent = value.toString();
+
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          counter.textContent = target.toString();
+        }
+      };
+
+      requestAnimationFrame(tick);
+    });
+  };
+
+  if (statsList && counters?.length) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            runCounters();
+            observer.unobserve(statsList);
+          }
+        });
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(statsList);
+  }
+</script>
+
+<style is:global>
+  /* ==========================================================================
+     Block: about
+     ========================================================================== */
+  .about {
+    padding: var(--space-20) 0;
+    background: #f3f3f3;
+  }
+
+  /* Element: about__container */
+  .about__container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-10);
+  }
+
+  /* Element: about__item */
+  .about__item {
+    position: relative;
+    padding-right: var(--space-8);
+  }
+
+  .about__item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 3.5rem;
+    right: 0;
+    width: 1px;
+    height: 3.25rem;
+    background: #0f5961;
+    opacity: 0.7;
+  }
+
+  /* Element: about__title */
+  .about__title {
+    margin-bottom: var(--space-6);
+    color: var(--color-primary);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  /* Element: about__text */
+  .about__text {
+    max-width: 34ch;
+    color: #5c5c5c;
+    font-size: var(--font-size-lg);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  /* ==========================================================================
+     Block: about-us
+     ========================================================================== */
+  .about-us {
+    background: var(--color-white);
+  }
+
+  .about-us__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 34rem;
+  }
+
+  .about-us__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-6);
+    padding: clamp(6rem, 4vw, 4rem);
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .about-us__title {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1;
+    letter-spacing: 0.01em;
+    font-weight: 800;
+  }
+
+  .about-us__text {
+    max-width: 33ch;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: clamp(1rem, 1.6vw, 1.4rem);
+    line-height: 1.5;
+  }
+
+  .about-us__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin-top: var(--space-4);
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    border-radius: var(--radius-full);
+    padding: 0.65rem 1.4rem;
+    color: var(--color-white);
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    transition: background-color var(--transition-base);
+  }
+
+  .about-us__button:hover {
+    background: rgba(255, 255, 255, 0.16);
+  }
+
+  .about-us__media {
+    position: relative;
+    min-height: 20rem;
+  }
+
+  .about-us__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .about-us__stats {
+    position: absolute;
+    right: clamp(1rem, 3vw, 2rem);
+    bottom: clamp(1rem, 3vw, 2rem);
+    left: clamp(1rem, 3vw, 2rem);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+    color: var(--color-white);
+  }
+
+  .about-us__stat-number {
+    display: flex;
+    align-items: baseline;
+    gap: 0.08em;
+    font-size: clamp(2rem, 3vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .about-us__stat-label {
+    display: block;
+    margin-top: var(--space-1);
+    max-width: 10ch;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(0.95rem, 1.3vw, 1.25rem);
+    line-height: 1.25;
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 1024px) {
+    .about {
+      padding: var(--space-16) 0;
+    }
+
+    .about__container {
+      gap: var(--space-8);
+    }
+
+    .about__text {
+      font-size: var(--font-size-lg);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .about__container {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+    }
+
+    .about__item {
+      padding-right: 0;
+      padding-bottom: var(--space-6);
+    }
+
+    .about__item:not(:last-child)::after {
+      top: auto;
+      right: auto;
+      bottom: 0;
+      left: 0;
+      width: 4.5rem;
+      height: 1px;
+    }
+
+    .about__text {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .about-us__layout {
+      grid-template-columns: 1fr;
+    }
+
+    .about-us__text {
+      max-width: 100%;
+    }
+
+    .about-us__media {
+      min-height: 30rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-us__content {
+      gap: var(--space-5);
+      padding: var(--space-10) var(--space-6);
+    }
+
+    .about-us__stats {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+    }
+
+    .about-us__stat-label {
+      max-width: none;
+    }
+  }
+</style>
