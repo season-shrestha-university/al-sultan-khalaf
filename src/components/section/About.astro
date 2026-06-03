@@ -12,8 +12,8 @@
     <article class="about__item">
       <h2 class="about__title">WE SERVE.</h2>
       <p class="about__text">
-        From sales and rentals to comprehensive after-sales maintenance, we
-        work around your schedule and your needs.
+        From sales and rentals to comprehensive after-sales maintenance, we work
+        around your schedule and your needs.
       </p>
     </article>
 
@@ -32,14 +32,16 @@
     <article class="about-us__content">
       <h2 class="about-us__title">ABOUT US</h2>
       <p class="about-us__text">
-        Since <strong>1973</strong>, Al-Sultan &amp; Khalaf Trading Co. has grown
-        into one of Kuwait's most established trading companies - spanning light
-        and heavy equipment, cranes, generators, fluid solutions, and more.
+        Since <strong>1973</strong>, Al-Sultan &amp; Khalaf Trading Co. has
+        grown into one of Kuwait's most established trading companies - spanning
+        light and heavy equipment, cranes, generators, fluid solutions, and
+        more.
       </p>
       <p class="about-us__text">
-        Based in the <strong>Shuwaikh Industrial Area</strong>, our 1,600-square-meter
-        showroom is home to a team of dedicated professionals who take the time
-        to understand what each client needs and deliver solutions that last.
+        Based in the <strong>Shuwaikh Industrial Area</strong>, our
+        1,600-square-meter showroom is home to a team of dedicated professionals
+        who take the time to understand what each client needs and deliver
+        solutions that last.
       </p>
       <a class="about-us__button" href="#">LEARN MORE</a>
     </article>
@@ -55,22 +57,25 @@
       <ul class="about-us__stats" aria-label="Company highlights">
         <li class="about-us__stat">
           <span class="about-us__stat-number"
-            ><span class="about-us__stat-count" data-target="50">0</span
-            ><span class="about-us__stat-plus">+</span></span
+            ><span class="about-us__stat-count" data-target="50">0</span><span
+              class="about-us__stat-plus">+</span
+            ></span
           >
           <span class="about-us__stat-label">years in the market</span>
         </li>
         <li class="about-us__stat">
           <span class="about-us__stat-number"
-            ><span class="about-us__stat-count" data-target="400">0</span
-            ><span class="about-us__stat-plus">+</span></span
+            ><span class="about-us__stat-count" data-target="400">0</span><span
+              class="about-us__stat-plus">+</span
+            ></span
           >
           <span class="about-us__stat-label">successful projects</span>
         </li>
         <li class="about-us__stat">
           <span class="about-us__stat-number"
-            ><span class="about-us__stat-count" data-target="50">0</span
-            ><span class="about-us__stat-plus">+</span></span
+            ><span class="about-us__stat-count" data-target="50">0</span><span
+              class="about-us__stat-plus">+</span
+            ></span
           >
           <span class="about-us__stat-label">worldwide partners</span>
         </li>
@@ -205,7 +210,7 @@
     flex-direction: column;
     justify-content: center;
     gap: var(--space-6);
-    padding: clamp(6rem, 4vw, 4rem);
+    padding: clamp(5rem, 4vw, 4rem);
     background: var(--color-primary);
     color: var(--color-white);
   }
@@ -218,10 +223,15 @@
   }
 
   .about-us__text {
-    max-width: 33ch;
+    max-width: 48ch;
     color: rgba(255, 255, 255, 0.92);
-    font-size: clamp(1rem, 1.6vw, 1.4rem);
+    font-size: clamp(0.8rem, 1.6vw, 1.5rem);
     line-height: 1.5;
+  }
+  @media (max-width: 768px) {
+    .about-us__text {
+      max-width: 20ch;
+    }
   }
 
   .about-us__button {
