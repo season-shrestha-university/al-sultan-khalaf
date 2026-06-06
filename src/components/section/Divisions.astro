@@ -1,0 +1,266 @@
+---
+import Tab from "../ui/tab.astro";
+---
+
+<section class="divisions-section container">
+    <h2 class="division__title">OUR DIVISIONS</h2>
+    <Tab
+        tabs={[
+            { id: "generators", label: "GENERATORS" },
+            { id: "fluid-solutions", label: "FLUID SOLUTIONS" },
+            { id: "heavy-equipment", label: "HEAVY EQUIPMENT" },
+            { id: "light-equipment", label: "LIGHT EQUIPMENT" },
+            { id: "rentals", label: "RENTALS & WORKSHOPS" },
+            { id: "spare-parts", label: "SPARE PARTS" },
+        ]}
+        defaultTab="generators"
+    >
+        <div slot="generators" class="division-content">
+            <h2 class="division-title">GENERATORS</h2>
+            <div class="division-layout">
+                <img
+                    src="/banner.png"
+                    alt="Generators"
+                    class="division-image"
+                />
+                <div class="division-text">
+                    <div class="text-paragraphs">
+                        <p>
+                            Generators have been at the heart of Al-Sultan &
+                            Khalaf since the company's founding in <strong
+                                >1963</strong
+                            >. What began with imports from the United Kingdom
+                            has grown into a comprehensive supply and service
+                            operation, representing leading international
+                            manufacturers including <strong
+                                >Mitsubishi, Yanmar, AGG, Denair, Baifa, and
+                                Hwasdan</strong
+                            > — with a range covering <strong
+                                >1 KVA to 3000 KVA.</strong
+                            >
+                        </p>
+                        <p>
+                            We work across ministries, commercial sectors, and
+                            private enterprises, providing installation,
+                            commissioning, training, and handover services. Our <strong
+                                >800-square-metre</strong
+                            > workshop is staffed by skilled engineers and technicians
+                            who ensure genuine spare parts and after-sales support
+                            are always available — keeping your generators performing
+                            at their best.
+                        </p>
+                    </div>
+                    <a href="#" class="learn-more"
+                        >LEARN MORE <span class="arrow">▶</span></a
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div slot="fluid-solutions" class="division-content">
+            <h2 class="division-title">FLUID SOLUTIONS</h2>
+            <div class="division-layout">
+                <img
+                    src="/banner.png"
+                    alt="Fluid Solutions"
+                    class="division-image"
+                />
+                <div class="division-text">
+                    <div class="text-paragraphs">
+                        <p>
+                            Providing cutting-edge fluid solutions across
+                            various industrial sectors.
+                        </p>
+                    </div>
+                    <a href="#" class="learn-more"
+                        >LEARN MORE <span class="arrow">▶</span></a
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div slot="heavy-equipment" class="division-content">
+            <h2 class="division-title">HEAVY EQUIPMENT</h2>
+            <div class="division-layout">
+                <img
+                    src="/banner.png"
+                    alt="Heavy Equipment"
+                    class="division-image"
+                />
+                <div class="division-text">
+                    <div class="text-paragraphs">
+                        <p>
+                            Supplying reliable heavy equipment for demanding
+                            construction and infrastructure projects.
+                        </p>
+                    </div>
+                    <a href="#" class="learn-more"
+                        >LEARN MORE <span class="arrow">▶</span></a
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div slot="light-equipment" class="division-content">
+            <h2 class="division-title">LIGHT EQUIPMENT</h2>
+            <div class="division-layout">
+                <img
+                    src="/banner.png"
+                    alt="Light Equipment"
+                    class="division-image"
+                />
+                <div class="division-text">
+                    <div class="text-paragraphs">
+                        <p>
+                            A wide range of light equipment for everyday
+                            operational needs.
+                        </p>
+                    </div>
+                    <a href="#" class="learn-more"
+                        >LEARN MORE <span class="arrow">▶</span></a
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div slot="rentals" class="division-content">
+            <h2 class="division-title">RENTALS & WORKSHOPS</h2>
+            <div class="division-layout">
+                <img
+                    src="/banner.png"
+                    alt="Rentals & Workshops"
+                    class="division-image"
+                />
+                <div class="division-text">
+                    <div class="text-paragraphs">
+                        <p>
+                            Flexible rental solutions and comprehensive workshop
+                            support.
+                        </p>
+                    </div>
+                    <a href="#" class="learn-more"
+                        >LEARN MORE <span class="arrow">▶</span></a
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div slot="spare-parts" class="division-content">
+            <h2 class="division-title">SPARE PARTS</h2>
+            <div class="division-layout">
+                <img
+                    src="/banner.png"
+                    alt="Spare Parts"
+                    class="division-image"
+                />
+                <div class="division-text">
+                    <div class="text-paragraphs">
+                        <p>
+                            Ensuring operational continuity with genuine spare
+                            parts.
+                        </p>
+                    </div>
+                    <a href="#" class="learn-more"
+                        >LEARN MORE <span class="arrow">▶</span></a
+                    >
+                </div>
+            </div>
+        </div>
+    </Tab>
+</section>
+
+<style>
+    .division__title {
+        color: var(--color-primary);
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        margin-bottom: 3rem;
+    }
+
+    .divisions-section {
+        margin: 4rem auto;
+        padding: 0 1rem;
+    }
+
+    /* Internal Content Styles */
+    .division-title {
+        color: #eb3237;
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-top: 0;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+    }
+
+    .division-layout {
+        display: flex;
+        gap: 2.5rem;
+        align-items: stretch;
+    }
+
+    .division-image {
+        width: 35%;
+        border-radius: 0.25rem;
+        object-fit: cover;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        min-height: 250px;
+    }
+
+    .division-text {
+        width: 65%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .text-paragraphs p {
+        color: #777;
+        line-height: 1.8;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+    }
+
+    .text-paragraphs strong {
+        color: #004b87;
+        font-weight: 600;
+    }
+
+    .learn-more {
+        align-self: flex-end;
+        color: #eb3237;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 1rem;
+        transition: opacity 0.3s;
+    }
+
+    .learn-more:hover {
+        opacity: 0.7;
+    }
+
+    .arrow {
+        font-size: 0.75rem;
+        color: #b3b3b3;
+    }
+
+    @media (max-width: 850px) {
+        .division-layout {
+            flex-direction: column;
+        }
+        .division-image {
+            width: 100%;
+            height: 200px;
+        }
+        .division-text {
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+    }
+</style>

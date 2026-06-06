@@ -1,0 +1,117 @@
+---
+interface TabItem {
+    id: string;
+    label: string;
+}
+
+interface Props {
+    tabs?: TabItem[];
+    defaultTab?: string;
+}
+
+const { tabs = [], defaultTab = tabs[0]?.id } = Astro.props;
+
+const tabContents = await Promise.all(
+    tabs.map(async (tab) => {
+        const html = await Astro.slots.render(tab.id);
+        return {
+            ...tab,
+            html,
+        };
+    }),
+);
+
+const groupName = `tab-group-${Math.random().toString(36).substring(2, 9)}`;
+---
+
+<div class="tabs">
+    {
+        tabContents.map((tab) => {
+            const isChecked = tab.id === defaultTab;
+            return (
+                <>
+                    <input
+                        type="radio"
+                        name={groupName}
+                        id={`${groupName}-${tab.id}`}
+                        checked={isChecked ? "checked" : undefined}
+                    />
+                    <label for={`${groupName}-${tab.id}`}>{tab.label}</label>
+                    <div class="tab-content">
+                        <Fragment set:html={tab.html} />
+                    </div>
+                </>
+            );
+        })
+    }
+</div>
+
+<style>
+    .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .tabs label {
+        background: #eeeeee;
+        color: #004b87;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 800;
+        font-size: 0.85rem;
+        letter-spacing: 0.03em;
+        margin: 0;
+        order: 1;
+        padding: 0.6rem 1.8rem;
+        border-radius: 9999px;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        user-select: none;
+    }
+
+    .tabs label:hover {
+        background: #e0e0e0;
+    }
+
+    .tabs .tab-content {
+        background: #f4f4f4;
+        display: none;
+        flex-grow: 1;
+        width: 100%;
+        order: 99;
+        margin-top: 1.5rem;
+        border-radius: 1.5rem;
+        padding: 3rem;
+        box-shadow: 7px 7px 15px rgb(0 0 0 / 17%);
+    }
+
+    .tabs input[type="radio"] {
+        display: none;
+    }
+
+    .tabs input[type="radio"]:checked + label {
+        background: #004a8f;
+        color: white;
+    }
+
+    .tabs input[type="radio"]:checked + label:hover {
+        background: #004a8f;
+    }
+
+    .tabs input[type="radio"]:checked + label + .tab-content {
+        display: block;
+        animation: fadeIn 0.4s ease forwards;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(5px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
